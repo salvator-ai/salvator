@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Care</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Health Care</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li><a href="doctor.html">Meet the Doctor</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Tell Us Your Symptoms</h2>
+        <form id="symptom-form">
+            <label for="symptoms">Describe your symptoms:</label>
+            <textarea id="symptoms" name="symptoms" required></textarea>
+            <button type="submit">Get Medicine Recommendation</button>
+        </form>
+        <div id="result"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Health Care</p>
+    </footer>
+
+    <script>
+        document.getElementById('symptom-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let symptoms = document.getElementById('symptoms').value.toLowerCase();
+            let suggestion = "Please consult a doctor for accurate diagnosis.";
+
+            if (symptoms.includes("fever") && symptoms.includes("headache")) {
+                suggestion = "You might have a flu. Consider taking Paracetamol.";
+            } else if (symptoms.includes("cough") && symptoms.includes("sore throat")) {
+                suggestion = "You may have a cold. Try taking some cough syrup.";
+            }
+
+            document.getElementById('result').textContent = suggestion;
+        });
+    </script>
+</body>
+</html>
